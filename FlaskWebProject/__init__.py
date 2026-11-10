@@ -1,3 +1,4 @@
+from werkzeug.middleware.proxy_fix import ProxyFix
 """
 The flask application package.
 """
@@ -9,6 +10,7 @@ from flask_login import LoginManager
 from flask_session import Session
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 app.config.from_object(Config)
 app.logger.setLevel(logging.INFO)
 Session(app)
