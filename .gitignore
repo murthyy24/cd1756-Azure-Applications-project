@@ -1,2 +1,5 @@
 .venv/
 requirements-local.txt
+__pycache__/
+flask_session/
+*.whl
